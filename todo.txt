@@ -1,0 +1,22 @@
+
+* learn to get the internal temperature
+* find old jeenode code and get it working for sensors
+* write jeelink code to receive sensor broadcasts and print on serial
+* calibrate sensor offset and gain
+* learn out how to do low-power jeenode stuff
+* make batteries for 3.3V supply with low dropout regulator (LiPo single cell?)
+* set up cosm account for logging
+* find old python code for doing serial stuff
+* write python script to:
+  * read data from jeelink serial
+  * parse out the data and look up node to location mapping
+  * post to cosm
+
+
+now todo
+* reduce sensors to 1-minute times
+* find suitable containers with good temperature measurement and good antennas
+* set up python and dependencies on mac server
+* find usb hub for use on server
+* figure out how to make script start on mac startup
+* buy proper temp & humid sensors, then update everything to use it
