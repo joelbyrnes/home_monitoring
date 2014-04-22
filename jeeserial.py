@@ -1,7 +1,7 @@
 import serial
 import time
 
-SERIAL_PORT = "/dev/tty.usbserial-A600dVGp"
+SERIAL_PORT = "/dev/ttyUSB0"
 
 def main():
 	port = None

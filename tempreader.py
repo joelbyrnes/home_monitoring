@@ -4,13 +4,15 @@ import serial
 import time
 from lib_cosm import CosmFeedUpdate
 
-SERIAL_PORT = "/dev/tty.usbserial-A600dVGp"
+SERIAL_PORT = "/dev/ttyUSB0"
 
-regex = re.compile("Node (?P<node>\d) Temp (?P<temp>[\d.]+) C", re.IGNORECASE)
+# eg: Node 1 Temp 24.00 C Humid 45.00 %
+regex = re.compile("Node (?P<node>\d) Temp (?P<temp>[\d.]+) C Humid (?P<humid>[\d.]+) %", re.IGNORECASE)
 
 pfu = CosmFeedUpdate("101079","-T7sOofXIdqrFYVHMvVzZCler-eSAKxURlV4RHc5UTExVT0g")
 
-node_dict = {"1" : "pantry", "2": "wine_rack"}
+node_dict = {}
+node_dict = {"1" : "pantry", "2": "storage"}
 
 def parseline(line):
 	r = regex.search(line)
@@ -21,15 +23,16 @@ def parseline(line):
 			location = node_dict[d["node"]]
 
 			# do some stuff; gather data, repeating as necessary for any number of datastreams
-			pfu.addDatapoint(location, d["temp"])
+			pfu.addDatapoint(location+"_temp", d["temp"])
+			#pfu.addDatapoint(location+"_humid", d["humid"])
 
-			print "node %s, location %s, temp %s" % (d["node"], location, d["temp"])
+			print "node %s, location %s, temp %s, humid %s" % (d["node"], location, d["temp"], d["humid"])
 
 			pfu.buildUpdate()
 			pfu.sendUpdate()
 			pfu.reset()
 		else:
-			print "node ID %s not known, temp %s" % (d["node"], d["temp"])
+			print "node ID %s not known, temp %s, humid %s" % (d["node"], d["temp"], d["humid"])
 	else:
 		print "line not recognised: %s" % line,
 
