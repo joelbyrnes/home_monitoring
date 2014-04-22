@@ -24,7 +24,7 @@ def parseline(line):
 
 			# do some stuff; gather data, repeating as necessary for any number of datastreams
 			pfu.addDatapoint(location+"_temp", d["temp"])
-			#pfu.addDatapoint(location+"_humid", d["humid"])
+			pfu.addDatapoint(location+"_humid", d["humid"])
 
 			print "node %s, location %s, temp %s, humid %s" % (d["node"], location, d["temp"], d["humid"])
 
