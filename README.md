@@ -18,11 +18,14 @@ sudo apt-get install python-serial python-mechanize
 # other useful packages for python: 
 sudo apt-get install python-setuptools && sudo easy_install pip
 
-# On R.Pi an FTDI USB serial interface is probably /dev/ttyUSB0, so edit tempreader.py and change the device there.  
+# On R.Pi the first USB serial interface is usually /dev/ttyUSB0
 
-# Then just run it:
+# Then run it:
 python tempreader.py 
 
+SERIAL_PORT=/dev/ttyUSB0 FEED_ID=1234567 API_KEY=abcdefgHIJKLMNOPqrstuvWXYZ0123456789 python tempreader.py
+
+# I suggest putting your environment variables in a run.sh file so you can just run that. 
 
 To do
 =====
