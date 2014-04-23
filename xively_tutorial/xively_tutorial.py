@@ -10,7 +10,7 @@ import requests
 # extract feed_id and api_key from environment variables
 FEED_ID = os.environ["FEED_ID"]
 API_KEY = os.environ["API_KEY"]
-DEBUG = os.environ["DEBUG"] or false
+DEBUG = os.environ["DEBUG"] or False
  
 # initialize api client
 api = xively.XivelyAPIClient(API_KEY)
