@@ -1,7 +1,9 @@
 import serial
 import time
+import os
 
-SERIAL_PORT = "/dev/ttyUSB0"
+#SERIAL_PORT = "/dev/ttyUSB0"
+SERIAL_PORT = os.environ["SERIAL_PORT"]
 
 def main():
 	port = None
