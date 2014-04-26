@@ -1,15 +1,18 @@
+import os
 import re
 import sys
 import serial
 import time
 from lib_cosm import CosmFeedUpdate
 
-SERIAL_PORT = "/dev/ttyUSB0"
+SERIAL_PORT = os.environ["SERIAL_PORT"]
+FEED_ID = os.environ["FEED_ID"]
+API_KEY = os.environ["API_KEY"]
+
+pfu = CosmFeedUpdate(FEED_ID, API_KEY)
 
 # eg: Node 1 Temp 24.00 C Humid 45.00 %
 regex = re.compile("Node (?P<node>\d) Temp (?P<temp>[\d.]+) C Humid (?P<humid>[\d.]+) %", re.IGNORECASE)
-
-pfu = CosmFeedUpdate("101079","-T7sOofXIdqrFYVHMvVzZCler-eSAKxURlV4RHc5UTExVT0g")
 
 node_dict = {}
 node_dict = {"1" : "pantry", "2": "storage"}
