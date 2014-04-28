@@ -14,7 +14,7 @@ pfu = CosmFeedUpdate(FEED_ID, API_KEY)
 # eg: Node 1 Temp 24.00 C Humid 45.00 %
 regex = re.compile("Node (?P<node>\d) Temp (?P<temp>[\d.]+) C Humid (?P<humid>[\d.]+) %", re.IGNORECASE)
 
-node_dict = {}
+#node_dict = {}
 node_dict = {"1" : "pantry", "2": "storage"}
 
 def parseline(line):
